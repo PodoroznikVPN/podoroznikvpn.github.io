@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подорожник VPN | Включил и забыл</title>
+    <meta name="description" content="Умный VPN, который делит трафик. YouTube и Сбербанк работают одновременно. Невидим для провайдеров.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Theme Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e', // Основной зеленый
+                            600: '#16a34a', // Темно-зеленый для ховера
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fafafa;
+        }
+        
+        /* Плавная анимация появления */
+        .fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Мягкая тень для карточек */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-brand-500 selection:text-white relative overflow-x-hidden">
+
+    <!-- Фоновые декоративные элементы -->
+    <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-brand-100 blur-[100px] opacity-60 z-0 pointer-events-none"></div>
+    <div class="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] rounded-full bg-brand-50 blur-[80px] opacity-60 z-0 pointer-events-none"></div>
+
+    <!-- Навигация -->
+    <nav class="fixed w-full z-50 transition-all duration-300 glass-card" id="navbar">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Логотип -->
+                <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <svg class="w-8 h-8 text-brand-500" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 22C12 22 20 16 20 9C20 4.58172 16.4183 1 12 1C7.58172 1 4 4.58172 4 9C4 16 12 22 12 22ZM12 18.5C9.5 14.5 6 9.5 6 9C6 5.68629 8.68629 3 12 3C15.3137 3 18 5.68629 18 9C18 9.5 14.5 14.5 12 18.5Z"/>
+                        <path d="M12 14C14.7614 14 17 11.7614 17 9C17 6.23858 14.7614 4 12 4C9.23858 4 7 6.23858 7 9C7 11.7614 9.23858 14 12 14Z" opacity="0.3"/>
+                    </svg>
+                    <span class="font-bold text-xl tracking-tight text-slate-900">Подорожник <span class="text-brand-500">VPN</span></span>
+                </div>
+                <!-- Кнопка в шапке -->
+                <a href="https://t.me/PodoroznikVPN_bot" target="_blank" class="hidden sm:inline-flex items-center justify-center px-5 py-2 text-sm font-medium text-brand-600 bg-brand-50 rounded-full hover:bg-brand-100 transition-colors">
+                    Открыть в Telegram
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Главный экран (Hero) -->
+    <main class="pt-32 pb-16 sm:pt-40 sm:pb-24 lg:pb-32 px-4 mx-auto max-w-6xl relative z-10 text-center">
+        <div class="fade-in-up">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 text-brand-600 text-sm font-semibold mb-6">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-500 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+                </span>
+                Обходит белые списки
+            </span>
+            <h1 class="mx-auto max-w-4xl font-extrabold tracking-tight text-slate-900 text-5xl sm:text-6xl xl:text-7xl">
+                Единственный VPN, который <br class="hidden lg:block">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-emerald-400">включил и забыл 🍃</span>
+            </h1>
+            <p class="mx-auto mt-6 max-w-2xl text-lg sm:text-xl text-slate-600 leading-relaxed">
+                Умный алгоритм разделит трафик: YouTube, Instagram и Telegram работают <b>одновременно</b> со Сбербанком и Госуслугами.
+            </p>
+            
+            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="https://t.me/PodoroznikVPN_bot" target="_blank" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-white bg-brand-500 rounded-2xl hover:bg-brand-600 hover:shadow-xl hover:shadow-brand-500/20 hover:-translate-y-1 transition-all duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.11.03-1.9 1.2-5.36 3.53-.51.35-.97.53-1.38.51-.45-.02-1.32-.26-1.96-.46-.79-.26-1.42-.4-1.36-.84.03-.23.35-.47.96-.73 3.75-1.63 6.25-2.71 7.5-3.23 3.56-1.48 4.3-1.74 4.79-1.75.11 0 .35.02.48.11.1.08.15.19.16.29 0 .1-.01.22-.02.26z"/></svg>
+                    Получить доступ
+                </a>
+            </div>
+            <p class="mt-4 text-sm text-slate-500">Моментальная выдача ключа в Telegram. От 80 ₽/мес.</p>
+        </div>
+    </main>
+
+    <!-- Преимущества -->
+    <section class="py-16 sm:py-24 bg-white relative z-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up delay-100">
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900">Почему мы другие?</h2>
+                <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">Хватит переключать VPN туда-сюда. Мы создали сервис, который решает главные боли пользователей.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Карточка 1 -->
+                <div class="glass-card p-8 rounded-3xl fade-in-up delay-100 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Параллельная работа</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Заблокированные сервисы идут через защищенный канал, а российские (банки, такси) — напрямую. Всё работает одновременно.
+                    </p>
+                </div>
+
+                <!-- Карточка 2 -->
+                <div class="glass-card p-8 rounded-3xl fade-in-up delay-200 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Невидимость</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Оператор и WiFi провайдер не видят, что вы пользуетесь ВПН. Они не порежут скорость и не ограничат трафик в 15 ГБ.
+                    </p>
+                </div>
+
+                <!-- Карточка 3 -->
+                <div class="glass-card p-8 rounded-3xl fade-in-up delay-300 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Без капч и блокировок</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Пробивает "белые списки". Мы используем чистые IP-адреса, поэтому вам не придется постоянно доказывать Google, что вы не робот.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок Тарифы (Короткий оффер) -->
+    <section class="py-16 sm:py-24 relative z-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in-up">
+            <div class="glass-card rounded-[2rem] p-8 sm:p-12 border-2 border-brand-100">
+                <span class="inline-block bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider mb-4">Хит продаж</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Интернет по цене чашки кофе</h2>
+                <p class="text-lg text-slate-600 mb-8 max-w-xl mx-auto">
+                    Зафиксируйте скидку 20% на годовой тариф и навсегда избавьтесь от раздражающих блокировок. Абсолютный безлимит.
+                </p>
+                <div class="flex items-baseline justify-center gap-2 mb-8">
+                    <span class="text-5xl sm:text-6xl font-extrabold text-slate-900">80 ₽</span>
+                    <span class="text-xl text-slate-500 font-medium">/ месяц</span>
+                </div>
+                <a href="https://t.me/PodoroznikVPN_bot" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-bold text-white bg-slate-900 rounded-2xl hover:bg-slate-800 hover:-translate-y-1 transition-all duration-300">
+                    Оформить в Telegram
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="bg-white border-t border-slate-100 py-10 mt-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-lg text-slate-900">Подорожник <span class="text-brand-500">VPN</span></span>
+            </div>
+            <div class="text-slate-500 text-sm">
+                © 2026 Все права защищены.
+            </div>
+            <div class="flex gap-4">
+                <a href="https://t.me/PodoroznikVPN_bot" target="_blank" class="text-slate-400 hover:text-brand-500 transition-colors">
+                    <span class="sr-only">Telegram</span>
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.11.03-1.9 1.2-5.36 3.53-.51.35-.97.53-1.38.51-.45-.02-1.32-.26-1.96-.46-.79-.26-1.42-.4-1.36-.84.03-.23.35-.47.96-.73 3.75-1.63 6.25-2.71 7.5-3.23 3.56-1.48 4.3-1.74 4.79-1.75.11 0 .35.02.48.11.1.08.15.19.16.29 0 .1-.01.22-.02.26z"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Простой скрипт для эффекта тени у шапки при скролле -->
+    <script>
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-sm');
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                nav.classList.remove('shadow-sm');
+                nav.style.background = 'rgba(255, 255, 255, 0.8)';
+            }
+        });
+    </script>
+</body>
+</html>
