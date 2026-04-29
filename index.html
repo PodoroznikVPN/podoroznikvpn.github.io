@@ -3,8 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Подорожник VPN | Включил и забыл</title>
-    <meta name="description" content="Умный VPN, который делит трафик. YouTube и Сбербанк работают одновременно. Невидим для провайдеров.">
+    
+    <!-- SEO Мета-теги -->
+    <title>Подорожник VPN | Умный VPN без отключений для России</title>
+    <meta name="description" content="Умный VPN, который сам делит трафик. Зарубежные сайты работают через VPN, а российские банки и сервисы (Сбербанк, Госуслуги) — напрямую. Полная невидимость для провайдеров.">
+    <meta name="keywords" content="VPN, ВПН, VPN без блокировок, умный VPN, разделение трафика, обход белых списков, VPN для Сбербанка, стабильный VPN, невидимый VPN, Подорожник VPN">
+    <meta name="author" content="Подорожник VPN">
+    <meta name="robots" content="index, follow">
+
+    <!-- Верификация Яндекс.Вебмастер -->
+    <meta name="yandex-verification" content="49f30ce13354ff72" />
+
+    <!-- Canonical URL (Защита от дублей страниц) -->
+    <link rel="canonical" href="https://podoroznikvpn.github.io/" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- Предзагрузка шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Open Graph (Facebook, ВКонтакте, Telegram) -->
+    <meta property="og:title" content="Подорожник VPN | Включил и забыл">
+    <meta property="og:description" content="YouTube и Instagram работают одновременно со Сбербанком и Госуслугами. Невидим для мобильных операторов.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://podoroznikvpn.github.io/">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Подорожник VPN | Умный VPN без отключений">
+    <meta name="twitter:description" content="Зарубежные сайты работают через VPN, а российские банки — напрямую.">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,8 +47,10 @@
                         brand: {
                             50: '#f0fdf4',
                             100: '#dcfce7',
-                            500: '#22c55e', // Основной зеленый
-                            600: '#16a34a', // Темно-зеленый для ховера
+                            200: '#bbf7d0',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            900: '#14532d',
                         }
                     },
                     fontFamily: {
@@ -33,179 +64,558 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Schema.org (Микроразметка SoftwareApplication + FAQPage) -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Подорожник VPN",
+        "operatingSystem": "iOS, Android, Windows, macOS",
+        "applicationCategory": "UtilitiesApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "80",
+          "priceCurrency": "RUB",
+          "url": "https://podoroznikvpn.github.io/"
+        },
+        "description": "Умный VPN, который сам делит трафик. Зарубежные сайты работают через VPN, а российские банки и сервисы напрямую.",
+        "url": "https://podoroznikvpn.github.io/"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Будут ли работать российские сервисы (Сбербанк, Госуслуги)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Да. Мы используем технологию умного распределения: заблокированные сайты открываются через защищенный канал, а российские сервисы — напрямую через ваш обычный интернет. Отключать VPN больше не нужно."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Может ли оператор заблокировать меня за использование VPN?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Нет. Наш протокол полностью маскирует трафик под обычные веб-запросы. Мобильные операторы не видят, что вы используете VPN, поэтому не применяют лимиты и не снижают скорость."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Можно ли попробовать бесплатно перед покупкой?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Конечно! При первом запуске бота вы получаете бесплатный тестовый период без привязки банковской карты."
+            }
+          }
+        ]
+      }
+    ]
+    </script>
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #fafafa;
         }
         
-        /* Плавная анимация появления */
-        .fade-in-up {
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        /* SEO-friendly Scroll Animations */
+        .reveal {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        
-        .delay-100 { animation-delay: 100ms; }
-        .delay-200 { animation-delay: 200ms; }
-        .delay-300 { animation-delay: 300ms; }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* Мягкая тень для карточек */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+
         .glass-card {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.5);
             box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);
         }
+
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
     </style>
+    
+    <!-- Fallback для поисковиков без JS -->
+    <noscript>
+        <style>
+            .reveal { opacity: 1; transform: translateY(0); }
+        </style>
+    </noscript>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108973806', 'ym');
+
+        ym(108973806, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/108973806" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
 </head>
 <body class="text-slate-800 antialiased selection:bg-brand-500 selection:text-white relative overflow-x-hidden">
 
     <!-- Фоновые декоративные элементы -->
-    <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-brand-100 blur-[100px] opacity-60 z-0 pointer-events-none"></div>
-    <div class="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] rounded-full bg-brand-50 blur-[80px] opacity-60 z-0 pointer-events-none"></div>
+    <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-brand-100 blur-[120px] opacity-60 z-0 pointer-events-none"></div>
+    <div class="absolute top-[30%] right-[-5%] w-[30%] h-[30%] rounded-full bg-blue-50 blur-[100px] opacity-60 z-0 pointer-events-none"></div>
 
     <!-- Навигация -->
-    <nav class="fixed w-full z-50 transition-all duration-300 glass-card" id="navbar">
+    <nav class="fixed w-full z-50 transition-all duration-300 glass-card border-b border-slate-200/50" id="navbar">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- Логотип -->
-                <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <svg class="w-8 h-8 text-brand-500" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 22C12 22 20 16 20 9C20 4.58172 16.4183 1 12 1C7.58172 1 4 4.58172 4 9C4 16 12 22 12 22ZM12 18.5C9.5 14.5 6 9.5 6 9C6 5.68629 8.68629 3 12 3C15.3137 3 18 5.68629 18 9C18 9.5 14.5 14.5 12 18.5Z"/>
-                        <path d="M12 14C14.7614 14 17 11.7614 17 9C17 6.23858 14.7614 4 12 4C9.23858 4 7 6.23858 7 9C7 11.7614 9.23858 14 12 14Z" opacity="0.3"/>
-                    </svg>
+                <!-- Логотип (Шапка) -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <img src="logo.png" alt="Логотип Подорожник VPN" class="w-8 h-8 object-contain" onerror="this.outerHTML='<span class=\'w-8 h-8 flex items-center justify-center bg-brand-100 text-brand-600 rounded-lg font-bold\'>🍃</span>'">
                     <span class="font-bold text-xl tracking-tight text-slate-900">Подорожник <span class="text-brand-500">VPN</span></span>
                 </div>
                 <!-- Кнопка в шапке -->
-                <a href="https://t.me/PodoroznikVPN_bot" target="_blank" class="hidden sm:inline-flex items-center justify-center px-5 py-2 text-sm font-medium text-brand-600 bg-brand-50 rounded-full hover:bg-brand-100 transition-colors">
+                <a href="https://t.me/PodoroznikVPN_bot" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-brand-600 bg-brand-50 rounded-full hover:bg-brand-100 hover:scale-105 transition-all">
                     Открыть в Telegram
                 </a>
             </div>
         </div>
     </nav>
 
+    <!-- Основной контент страницы -->
+    <main>
+
     <!-- Главный экран (Hero) -->
-    <main class="pt-32 pb-16 sm:pt-40 sm:pb-24 lg:pb-32 px-4 mx-auto max-w-6xl relative z-10 text-center">
-        <div class="fade-in-up">
-            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 text-brand-600 text-sm font-semibold mb-6">
+    <section class="pt-28 pb-12 sm:pt-40 sm:pb-24 lg:pb-32 px-4 mx-auto max-w-6xl relative z-10 text-center">
+        <div class="reveal active">
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-1.5 rounded-full bg-red-50 text-red-600 text-xs sm:text-sm font-bold mb-6 border border-red-100">
                 <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-500 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
                 </span>
-                Обходит белые списки
+                Успешно обходит строгие ограничения провайдеров
             </span>
-            <h1 class="mx-auto max-w-4xl font-extrabold tracking-tight text-slate-900 text-5xl sm:text-6xl xl:text-7xl">
-                Единственный VPN, который <br class="hidden lg:block">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-emerald-400">включил и забыл 🍃</span>
+            <h1 class="mx-auto max-w-4xl font-extrabold tracking-tight text-slate-900 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight">
+                Умный VPN, который достаточно <br class="hidden md:block">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-emerald-400">включить один раз 🍃</span>
             </h1>
-            <p class="mx-auto mt-6 max-w-2xl text-lg sm:text-xl text-slate-600 leading-relaxed">
-                Умный алгоритм разделит трафик: YouTube, Instagram и Telegram работают <b>одновременно</b> со Сбербанком и Госуслугами.
+            <p class="mx-auto mt-6 max-w-2xl text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed font-medium">
+                Забудьте о ручном переключении VPN ради банковских приложений. Наш алгоритм сам делит трафик: YouTube загружается мгновенно, а Сбербанк и Госуслуги работают <b>одновременно</b> и без сбоев.
             </p>
             
-            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-                <a href="https://t.me/PodoroznikVPN_bot" target="_blank" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-white bg-brand-500 rounded-2xl hover:bg-brand-600 hover:shadow-xl hover:shadow-brand-500/20 hover:-translate-y-1 transition-all duration-300">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.11.03-1.9 1.2-5.36 3.53-.51.35-.97.53-1.38.51-.45-.02-1.32-.26-1.96-.46-.79-.26-1.42-.4-1.36-.84.03-.23.35-.47.96-.73 3.75-1.63 6.25-2.71 7.5-3.23 3.56-1.48 4.3-1.74 4.79-1.75.11 0 .35.02.48.11.1.08.15.19.16.29 0 .1-.01.22-.02.26z"/></svg>
-                    Получить доступ
+            <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+                <a href="https://t.me/PodoroznikVPN_bot" target="_blank" rel="noopener noreferrer" title="Перейти в Telegram-бот Подорожник VPN" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 text-base sm:text-lg font-bold text-white bg-brand-500 rounded-2xl hover:bg-brand-600 hover:shadow-xl hover:shadow-brand-500/30 hover:-translate-y-1 transition-all duration-300">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.11.03-1.9 1.2-5.36 3.53-.51.35-.97.53-1.38.51-.45-.02-1.32-.26-1.96-.46-.79-.26-1.42-.4-1.36-.84.03-.23.35-.47.96-.73 3.75-1.63 6.25-2.71 7.5-3.23 3.56-1.48 4.3-1.74 4.79-1.75.11 0 .35.02.48.11.1.08.15.19.16.29 0 .1-.01.22-.02.26z"/></svg>
+                    Доступ через Telegram
+                </a>
+                <a href="https://cool-vpn.ru" target="_blank" rel="noopener noreferrer" title="Личный кабинет на сайте" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 text-base sm:text-lg font-bold text-slate-700 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-500 hover:text-brand-600 hover:shadow-sm hover:-translate-y-1 transition-all duration-300">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                    Доступ через сайт
                 </a>
             </div>
-            <p class="mt-4 text-sm text-slate-500">Моментальная выдача ключа в Telegram. От 80 ₽/мес.</p>
-        </div>
-    </main>
 
-    <!-- Преимущества -->
-    <section class="py-16 sm:py-24 bg-white relative z-10">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-in-up delay-100">
-                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900">Почему мы другие?</h2>
-                <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">Хватит переключать VPN туда-сюда. Мы создали сервис, который решает главные боли пользователей.</p>
+            <!-- Пояснительная записка -->
+            <div class="mt-6 sm:mt-8 max-w-2xl mx-auto bg-white/80 backdrop-blur-sm border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-sm text-left flex flex-col sm:flex-row gap-4 sm:gap-5">
+                <div class="flex items-start gap-3 flex-1">
+                    <div class="bg-brand-50 text-brand-600 p-2 rounded-lg shrink-0 mt-0.5">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="font-bold text-slate-900 text-sm m-0 p-0 leading-none">В Telegram-боте</h2>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-snug">Быстрая выдача ключа, настройка в пару кликов и управление доступом прямо в мессенджере.</p>
+                    </div>
+                </div>
+                <div class="hidden sm:block w-px bg-slate-200 shrink-0"></div>
+                <div class="flex items-start gap-3 flex-1">
+                    <div class="bg-slate-100 text-slate-600 p-2 rounded-lg shrink-0 mt-0.5">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="font-bold text-slate-900 text-sm m-0 p-0 leading-none">В личном кабинете</h2>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-snug">Классический интерфейс на сайте для оформления и управления VPN без использования Telegram.</p>
+                    </div>
+                </div>
             </div>
+            
+            <div class="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-3 text-xs sm:text-sm text-slate-600 font-semibold">
+                <span class="flex items-center gap-1"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> От 80 ₽ в месяц</span>
+                <span class="flex items-center gap-1"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Автоматическая настройка</span>
+                <span class="flex items-center gap-1"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Поддержка 24/7</span>
+            </div>
+        </div>
+    </section>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Карточка 1 -->
-                <div class="glass-card p-8 rounded-3xl fade-in-up delay-100 hover:-translate-y-2 transition-transform duration-300">
-                    <div class="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+    <!-- Как распределяется трафик -->
+    <section class="py-12 sm:py-16 relative z-10 reveal">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white border border-slate-200 rounded-3xl sm:rounded-[2rem] p-6 sm:p-12 shadow-sm text-center">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-6 sm:mb-8">Как работает умное разделение трафика?</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-4 relative">
+                    <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-slate-100 transform -translate-x-1/2"></div>
+                    
+                    <div class="p-5 sm:p-6 bg-slate-50 rounded-2xl">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 mx-auto bg-brand-100 text-brand-600 rounded-full flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="font-bold text-base sm:text-lg text-slate-900 mb-4">Через защищенный канал</h3>
+                        <ul class="text-sm sm:text-base text-slate-600 space-y-2 font-medium list-none">
+                            <li><span class="text-brand-500 mr-2" aria-hidden="true">✔</span> YouTube (в высоком качестве)</li>
+                            <li><span class="text-brand-500 mr-2" aria-hidden="true">✔</span> Instagram и Facebook</li>
+                            <li><span class="text-brand-500 mr-2" aria-hidden="true">✔</span> Зарубежные нейросети и сайты</li>
+                            <li><span class="text-brand-500 mr-2" aria-hidden="true">✔</span> Заблокированные стриминги</li>
+                        </ul>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Параллельная работа</h3>
-                    <p class="text-slate-600 leading-relaxed">
-                        Заблокированные сервисы идут через защищенный канал, а российские (банки, такси) — напрямую. Всё работает одновременно.
-                    </p>
+
+                    <div class="p-5 sm:p-6 bg-white border border-slate-100 rounded-2xl">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 mx-auto bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        </div>
+                        <h3 class="font-bold text-base sm:text-lg text-slate-900 mb-4">Работают напрямую</h3>
+                        <ul class="text-sm sm:text-base text-slate-600 space-y-2 font-medium list-none">
+                            <li><span class="text-blue-500 mr-2" aria-hidden="true">✔</span> Сбербанк, Т-Банк, ВТБ</li>
+                            <li><span class="text-blue-500 mr-2" aria-hidden="true">✔</span> Госуслуги и Налоги</li>
+                            <li><span class="text-blue-500 mr-2" aria-hidden="true">✔</span> Яндекс.Такси и Доставка</li>
+                            <li><span class="text-blue-500 mr-2" aria-hidden="true">✔</span> Местные интернет-магазины</li>
+                        </ul>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Карточка 2 -->
-                <div class="glass-card p-8 rounded-3xl fade-in-up delay-200 hover:-translate-y-2 transition-transform duration-300">
-                    <div class="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Невидимость</h3>
-                    <p class="text-slate-600 leading-relaxed">
-                        Оператор и WiFi провайдер не видят, что вы пользуетесь ВПН. Они не порежут скорость и не ограничат трафик в 15 ГБ.
-                    </p>
+    <!-- Сравнение (Обычный VPN vs Подорожник) -->
+    <section class="py-12 sm:py-16 relative z-10 reveal">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 sm:mb-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Разница очевидна</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10">
+                <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                        <span class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-lg shrink-0" aria-hidden="true">😕</span>
+                        Обычные VPN-сервисы
+                    </h3>
+                    <ul class="space-y-4 list-none m-0 p-0">
+                        <li class="flex items-start gap-3 text-sm sm:text-base text-slate-600">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            <span>Вам приходится вручную отключать VPN, чтобы воспользоваться приложением банка.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm sm:text-base text-slate-600">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            <span>Провайдер замечает VPN-протокол и снижает скорость или ограничивает лимит трафика.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm sm:text-base text-slate-600">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            <span>Поисковые системы постоянно просят пройти капчу (отметить светофоры).</span>
+                        </li>
+                    </ul>
                 </div>
-
-                <!-- Карточка 3 -->
-                <div class="glass-card p-8 rounded-3xl fade-in-up delay-300 hover:-translate-y-2 transition-transform duration-300">
-                    <div class="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                
+                <div class="bg-brand-50 border-2 border-brand-500 rounded-3xl p-6 sm:p-8 shadow-lg shadow-brand-500/10 relative">
+                    <div class="absolute -top-3.5 right-6 bg-brand-500 text-white text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                        Ваш выбор
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Без капч и блокировок</h3>
-                    <p class="text-slate-600 leading-relaxed">
-                        Пробивает "белые списки". Мы используем чистые IP-адреса, поэтому вам не придется постоянно доказывать Google, что вы не робот.
-                    </p>
+                    <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                        <span class="w-8 h-8 rounded-full bg-white text-brand-500 flex items-center justify-center text-lg shadow-sm shrink-0" aria-hidden="true">🍃</span>
+                        Подорожник VPN
+                    </h3>
+                    <ul class="space-y-4 list-none m-0 p-0">
+                        <li class="flex items-start gap-3 text-sm sm:text-base text-slate-800 font-medium">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-brand-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Все сервисы работают одновременно: заблокированные — через ВПН, банки — напрямую.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm sm:text-base text-slate-800 font-medium">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-brand-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Полная невидимость для оператора связи. Никаких урезаний скорости и лимитов.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm sm:text-base text-slate-800 font-medium">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-brand-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Используются чистые IP-адреса. Интернет работает быстро и без раздражающих проверок.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Кому подойдет (Use Cases) -->
+    <section class="py-12 sm:py-16 bg-slate-50 border-t border-b border-slate-100 relative z-10 reveal">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 sm:mb-16">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900">Для кого мы создали Подорожник?</h2>
+                <p class="mt-3 sm:mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">Один сервис — надежные решения для совершенно разных задач.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                <div class="p-5 sm:p-6 bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-all">
+                    <div class="text-3xl sm:text-4xl mb-3 sm:mb-4" aria-hidden="true">🏠</div>
+                    <h3 class="font-bold text-base sm:text-lg text-slate-900 mb-2">Для себя и родителей</h3>
+                    <p class="text-slate-600 text-xs sm:text-sm">Настройте один раз и забудьте. Больше никаких звонков с просьбой «починить Сбербанк». Всё просто работает в фоне.</p>
+                </div>
+                <div class="p-5 sm:p-6 bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-all delay-100">
+                    <div class="text-3xl sm:text-4xl mb-3 sm:mb-4" aria-hidden="true">🎮</div>
+                    <h3 class="font-bold text-base sm:text-lg text-slate-900 mb-2">Для геймеров</h3>
+                    <p class="text-slate-600 text-xs sm:text-sm">Широкие каналы и стабильный пинг. Забудьте про лаги в мультиплеере и спокойно качайте игры и обновления.</p>
+                </div>
+                <div class="p-5 sm:p-6 bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-all delay-200">
+                    <div class="text-3xl sm:text-4xl mb-3 sm:mb-4" aria-hidden="true">✈️</div>
+                    <h3 class="font-bold text-base sm:text-lg text-slate-900 mb-2">Для релокантов</h3>
+                    <p class="text-slate-600 text-xs sm:text-sm">Мгновенный доступ к российским Госуслугам, Банкам и Авито из-за рубежа, не теряя доступа к мировому интернету.</p>
+                </div>
+                <div class="p-5 sm:p-6 bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-all delay-300">
+                    <div class="text-3xl sm:text-4xl mb-3 sm:mb-4" aria-hidden="true">💻</div>
+                    <h3 class="font-bold text-base sm:text-lg text-slate-900 mb-2">Для фрилансеров</h3>
+                    <p class="text-slate-600 text-xs sm:text-sm">Чистые IP-адреса защитят от блокировок на биржах (Upwork, Fiverr) и избавят от бесконечных проверок Cloudflare.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Как начать (Шаги) -->
+    <section class="py-12 sm:py-20 relative z-10 bg-white reveal">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 sm:mb-16">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900">Установка в 1 клик. Мы всё продумали</h2>
+                <p class="mt-3 sm:mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">Никакого ручного копирования кодов и сложных инструкций. Мы сделали процесс настолько простым и умным, что справится кто угодно.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 max-w-5xl mx-auto">
+                <div class="text-center">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 mx-auto bg-slate-50 rounded-full flex items-center justify-center text-xl sm:text-2xl font-black text-brand-500 shadow-sm mb-4 sm:mb-5 border border-slate-200">1</div>
+                    <h3 class="font-bold text-base sm:text-lg mb-2 sm:mb-3">Выберите устройство</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Запустите нашего Telegram-бота и просто укажите, куда хотите установить VPN: на iPhone, Android, Windows или macOS.</p>
+                </div>
+                <div class="text-center relative">
+                    <div class="hidden md:block absolute top-8 left-[-50%] w-full h-[2px] bg-gradient-to-r from-transparent via-brand-200 to-transparent"></div>
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 mx-auto bg-slate-50 rounded-full flex items-center justify-center text-xl sm:text-2xl font-black text-brand-500 shadow-sm mb-4 sm:mb-5 border border-slate-200 relative z-10">2</div>
+                    <h3 class="font-bold text-base sm:text-lg mb-2 sm:mb-3">Скачайте клиент</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Бот подскажет нужное приложение. Если его у вас еще нет — выдаст прямую и безопасную ссылку на официальный App Store или Google Play.</p>
+                </div>
+                <div class="text-center relative">
+                    <div class="hidden md:block absolute top-8 left-[-50%] w-full h-[2px] bg-gradient-to-r from-transparent via-brand-200 to-transparent"></div>
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 mx-auto bg-brand-500 rounded-full flex items-center justify-center text-xl sm:text-2xl font-black text-white shadow-md shadow-brand-500/40 mb-4 sm:mb-5 relative z-10">3</div>
+                    <h3 class="font-bold text-base sm:text-lg mb-2 sm:mb-3">Магия одного клика</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Просто нажмите кнопку в боте! Настройки <b>автоматически</b> пропишутся в вашем приложении. Останется только нажать тумблер «Включить».</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы пользователей -->
+    <section class="py-12 sm:py-16 bg-slate-50 relative z-10 reveal">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 sm:mb-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Что говорят пользователи?</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="flex items-center gap-1.5 sm:gap-2 text-amber-400 mb-3" aria-label="Рейтинг 5 звезд">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    </div>
+                    <p class="text-slate-600 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">«Я больше не работаю "переключателем"! Раньше постоянно бесило: заходишь в приложение банка — выключай ВПН, хочешь в соцсети — включай обратно. Подорожник просто висит в фоне, всё работает само. Идеально.»</p>
+                    <div class="font-bold text-slate-900 text-xs sm:text-sm">— Елена М.</div>
+                </div>
+                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="flex items-center gap-1.5 sm:gap-2 text-amber-400 mb-3" aria-label="Рейтинг 5 звезд">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    </div>
+                    <p class="text-slate-600 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">«Настоящее спасение от строгих ограничений. Мой провайдер заглушил старые протоколы, ничего не работало. Подорожник завёлся с первого клика, теперь YouTube на телевизоре грузит в 4K без буферизации.»</p>
+                    <div class="font-bold text-slate-900 text-xs sm:text-sm">— Александр В.</div>
+                </div>
+                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="flex items-center gap-1.5 sm:gap-2 text-amber-400 mb-3" aria-label="Рейтинг 5 звезд">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    </div>
+                    <p class="text-slate-600 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">«Самая быстрая настройка в моей жизни. Бот всё выдал сам за минуту. Оплатила годовой тариф обычной российской картой МИР — никаких проблем. Сервис, который реально уважает время клиента.»</p>
+                    <div class="font-bold text-slate-900 text-xs sm:text-sm">— Кристина Т.</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Блок Тарифы (Короткий оффер) -->
-    <section class="py-16 sm:py-24 relative z-10">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in-up">
-            <div class="glass-card rounded-[2rem] p-8 sm:p-12 border-2 border-brand-100">
-                <span class="inline-block bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider mb-4">Хит продаж</span>
-                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Интернет по цене чашки кофе</h2>
-                <p class="text-lg text-slate-600 mb-8 max-w-xl mx-auto">
-                    Зафиксируйте скидку 20% на годовой тариф и навсегда избавьтесь от раздражающих блокировок. Абсолютный безлимит.
+    <section id="tariffs" class="py-12 sm:py-20 relative z-10 reveal">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="glass-card rounded-3xl sm:rounded-[2.5rem] p-6 sm:p-14 border-2 border-brand-200 shadow-2xl shadow-brand-500/5 relative overflow-hidden">
+                <!-- Декор -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 translate-x-1/2 -translate-y-1/2"></div>
+                
+                <span class="inline-block bg-amber-100 text-amber-800 text-[10px] sm:text-xs px-3 sm:px-4 py-1.5 rounded-full font-bold uppercase tracking-wider mb-4 sm:mb-6 relative z-10">⚡ Хит продаж: Тариф на 1 год</span>
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 sm:mb-6 relative z-10">Безлимитный интернет по цене чашки кофе</h2>
+                <p class="text-sm sm:text-lg text-slate-600 mb-6 sm:mb-8 max-w-xl mx-auto relative z-10">
+                    Начните с <b>бесплатного тест-драйва без привязки карты</b>. Убедитесь в качестве и зафиксируйте скидку 20% на годовой тариф. Никаких скрытых списаний и урезания скорости.
                 </p>
-                <div class="flex items-baseline justify-center gap-2 mb-8">
-                    <span class="text-5xl sm:text-6xl font-extrabold text-slate-900">80 ₽</span>
-                    <span class="text-xl text-slate-500 font-medium">/ месяц</span>
+                
+                <!-- Что включено в тариф (Чеклист) -->
+                <div class="max-w-xl mx-auto bg-white/70 backdrop-blur-md border border-slate-200/80 rounded-2xl p-5 sm:p-7 mb-8 sm:mb-10 relative z-10 text-left shadow-sm">
+                    <p class="text-[11px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 text-center sm:text-left">В подписку включено:</p>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6 list-none m-0 p-0">
+                        <li class="flex items-start gap-3">
+                            <div class="bg-brand-50 text-brand-500 p-2 rounded-lg shrink-0 mt-0.5 shadow-sm border border-brand-100/50">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-sm font-bold text-slate-900">До 5 устройств</span>
+                                <span class="block text-xs text-slate-500 mt-0.5">Можно поделиться с семьей</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="bg-brand-50 text-brand-500 p-2 rounded-lg shrink-0 mt-0.5 shadow-sm border border-brand-100/50">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-sm font-bold text-slate-900">Полный безлимит</span>
+                                <span class="block text-xs text-slate-500 mt-0.5">Без ограничений по трафику</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="bg-brand-50 text-brand-500 p-2 rounded-lg shrink-0 mt-0.5 shadow-sm border border-brand-100/50">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-sm font-bold text-slate-900">Высокая скорость</span>
+                                <span class="block text-xs text-slate-500 mt-0.5">Смотрите видео в 4K</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="bg-brand-50 text-brand-500 p-2 rounded-lg shrink-0 mt-0.5 shadow-sm border border-brand-100/50">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-sm font-bold text-slate-900">Чистые IP-адреса</span>
+                                <span class="block text-xs text-slate-500 mt-0.5">Больше никаких капч</span>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <a href="https://t.me/PodoroznikVPN_bot" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-bold text-white bg-slate-900 rounded-2xl hover:bg-slate-800 hover:-translate-y-1 transition-all duration-300">
-                    Оформить в Telegram
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </a>
+
+                <div class="flex items-baseline justify-center gap-2 mb-8 sm:mb-10 relative z-10">
+                    <span class="text-lg sm:text-xl text-slate-500 font-medium">от</span>
+                    <span class="text-5xl sm:text-7xl font-black text-slate-900 tracking-tight">80 ₽</span>
+                    <span class="text-lg sm:text-xl text-slate-500 font-medium">/ месяц</span>
+                </div>
+                <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 relative z-10">
+                    <a href="https://t.me/PodoroznikVPN_bot" target="_blank" rel="noopener noreferrer" title="Перейти в бот" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 sm:gap-3 px-6 py-4 sm:px-10 sm:py-5 text-base sm:text-xl font-bold text-white bg-slate-900 rounded-2xl hover:bg-brand-500 hover:shadow-xl hover:shadow-brand-500/30 hover:-translate-y-1 transition-all duration-300">
+                        Попробовать бесплатно
+                        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                    <a href="https://cool-vpn.ru" target="_blank" rel="noopener noreferrer" title="Резервный сайт" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 sm:px-8 sm:py-5 text-base sm:text-lg font-bold text-slate-700 bg-white/80 backdrop-blur-md border-2 border-slate-200/50 rounded-2xl hover:border-brand-500 hover:text-brand-600 hover:-translate-y-1 transition-all duration-300">
+                        Основной сайт
+                    </a>
+                </div>
+                <p class="mt-4 sm:mt-6 text-xs sm:text-sm text-slate-500 relative z-10 font-medium">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 inline-block text-brand-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    Безопасная оплата российскими картами через официального бота
+                </p>
             </div>
         </div>
     </section>
 
+    <!-- FAQ -->
+    <section class="py-12 sm:py-16 bg-white relative z-10 reveal">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 sm:mb-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Часто задаваемые вопросы</h2>
+            </div>
+            <div class="space-y-3 sm:space-y-4">
+                <details class="group bg-slate-50 rounded-2xl p-5 sm:p-6 cursor-pointer border border-slate-100 open:border-brand-200 transition-colors">
+                    <summary class="flex justify-between items-center font-bold text-base sm:text-lg text-slate-900 outline-none">
+                        Будут ли работать российские сервисы (Сбербанк, Госуслуги)?
+                        <span class="transition group-open:rotate-180 shrink-0 ml-4">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="text-sm sm:text-base text-slate-600 mt-3 sm:mt-4 leading-relaxed">
+                        Да. В этом заключается ключевое преимущество Подорожника. Мы используем технологию умного распределения: заблокированные сайты открываются через защищенный канал, а российские сервисы — напрямую через ваш обычный интернет. Отключать VPN больше не нужно.
+                    </p>
+                </details>
+
+                <details class="group bg-slate-50 rounded-2xl p-5 sm:p-6 cursor-pointer border border-slate-100 open:border-brand-200 transition-colors">
+                    <summary class="flex justify-between items-center font-bold text-base sm:text-lg text-slate-900 outline-none">
+                        Может ли оператор заблокировать меня за использование VPN?
+                        <span class="transition group-open:rotate-180 shrink-0 ml-4">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="text-sm sm:text-base text-slate-600 mt-3 sm:mt-4 leading-relaxed">
+                        Нет. Наш протокол полностью маскирует трафик под обычные веб-запросы. Мобильные операторы не видят, что вы используете VPN, поэтому не применяют лимиты (например, в 15 ГБ) и не снижают скорость вашего интернета.
+                    </p>
+                </details>
+
+                <details class="group bg-slate-50 rounded-2xl p-5 sm:p-6 cursor-pointer border border-slate-100 open:border-brand-200 transition-colors">
+                    <summary class="flex justify-between items-center font-bold text-base sm:text-lg text-slate-900 outline-none">
+                        На каких устройствах работает сервис?
+                        <span class="transition group-open:rotate-180 shrink-0 ml-4">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="text-sm sm:text-base text-slate-600 mt-3 sm:mt-4 leading-relaxed">
+                        Мы поддерживаем все современные платформы: iOS (iPhone/iPad), Android, Windows и macOS. Инструкция по настройке для каждого устройства выдается автоматически. Если возникнут трудности — наша служба поддержки на связи.
+                    </p>
+                </details>
+
+                <details class="group bg-slate-50 rounded-2xl p-5 sm:p-6 cursor-pointer border border-slate-100 open:border-brand-200 transition-colors">
+                    <summary class="flex justify-between items-center font-bold text-base sm:text-lg text-slate-900 outline-none">
+                        Можно ли попробовать бесплатно перед покупкой?
+                        <span class="transition group-open:rotate-180 shrink-0 ml-4">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="text-sm sm:text-base text-slate-600 mt-3 sm:mt-4 leading-relaxed">
+                        Конечно! При первом запуске бота вы получаете бесплатный тестовый период без привязки банковской карты. Оцените скорость и удобство, а уже потом принимайте решение об оплате.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Конец основного контента страницы -->
+    </main>
+
     <!-- Подвал -->
     <footer class="bg-white border-t border-slate-100 py-10 mt-10">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-2">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <img src="logo.png" alt="Логотип" class="w-6 h-6 object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" onerror="this.outerHTML='<span class=\'w-6 h-6 flex items-center justify-center bg-slate-100 text-slate-400 rounded text-xs font-bold\'>🍃</span>'">
                 <span class="font-bold text-lg text-slate-900">Подорожник <span class="text-brand-500">VPN</span></span>
             </div>
-            <div class="text-slate-500 text-sm">
-                © 2026 Все права защищены.
+            
+            <div class="text-slate-500 text-sm text-center md:text-left">
+                © 2026 Умный VPN для России. Все права защищены.
             </div>
+            
             <div class="flex gap-4">
-                <a href="https://t.me/PodoroznikVPN_bot" target="_blank" class="text-slate-400 hover:text-brand-500 transition-colors">
-                    <span class="sr-only">Telegram</span>
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.11.03-1.9 1.2-5.36 3.53-.51.35-.97.53-1.38.51-.45-.02-1.32-.26-1.96-.46-.79-.26-1.42-.4-1.36-.84.03-.23.35-.47.96-.73 3.75-1.63 6.25-2.71 7.5-3.23 3.56-1.48 4.3-1.74 4.79-1.75.11 0 .35.02.48.11.1.08.15.19.16.29 0 .1-.01.22-.02.26z"/></svg>
+                <a href="https://t.me/PodoroznikVPN_bot" target="_blank" rel="noopener noreferrer" title="Связаться в Telegram" class="text-slate-400 hover:text-brand-500 transition-colors" aria-label="Наш Telegram">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.11.03-1.9 1.2-5.36 3.53-.51.35-.97.53-1.38.51-.45-.02-1.32-.26-1.96-.46-.79-.26-1.42-.4-1.36-.84.03-.23.35-.47.96-.73 3.75-1.63 6.25-2.71 7.5-3.23 3.56-1.48 4.3-1.74 4.79-1.75.11 0 .35.02.48.11.1.08.15.19.16.29 0 .1-.01.22-.02.26z"/></svg>
                 </a>
             </div>
         </div>
     </footer>
 
-    <!-- Простой скрипт для эффекта тени у шапки при скролле -->
+    <!-- Скрипт для эффектов и SEO-анимаций -->
     <script>
+        // Тень на шапке
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 10) {
@@ -215,6 +625,27 @@
                 nav.classList.remove('shadow-sm');
                 nav.style.background = 'rgba(255, 255, 255, 0.8)';
             }
+        });
+
+        // Безопасный для SEO Observer (Анимации при скролле)
+        document.addEventListener("DOMContentLoaded", () => {
+            const reveals = document.querySelectorAll(".reveal");
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                        // Отключаем observer для элемента после появления, чтобы не грузить браузер
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, { 
+                threshold: 0.1, // Срабатывает когда 10% блока видно
+                rootMargin: "0px 0px -50px 0px"
+            });
+            
+            reveals.forEach(reveal => {
+                observer.observe(reveal);
+            });
         });
     </script>
 </body>
